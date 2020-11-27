@@ -1,12 +1,13 @@
-let operand1 = null;
-let operand2 = null;
-let operator = null;
+let operand1 = '';
+let operand2 = '';
+let operator = '';
 let result;
 let str='';
 const numpad = document.querySelectorAll(".key");
 const signs = document.querySelectorAll(".operation");
 const equal = document.getElementById('equal');
 const display = document.getElementById('display');
+const all_clear = document.getElementById('all-clear');
 
 function getResult(operand1, operand2, operator){
     let r;
@@ -20,7 +21,7 @@ function getResult(operand1, operand2, operator){
         r = Number(operand1)-Number(operand2);
         break;
 
-        case '*':
+        case 'x':
         r = Number(operand1)*Number(operand2);
         break;
 
@@ -37,7 +38,7 @@ function getResult(operand1, operand2, operator){
 }
 
 numpad.forEach((num)=>num.addEventListener('click',function(e){
-    (operator==null) ? operand1 = e.target.innerHTML : operand2 = e.target.innerHTML;
+    (operator=='') ? operand1 = operand1.concat(e.target.innerHTML) : operand2 = operand2.concat(e.target.innerHTML);
     str+= e.target.innerHTML;
     console.log(operand1);
     console.log(operand2);
@@ -49,7 +50,7 @@ numpad.forEach((num)=>num.addEventListener('click',function(e){
 signs.forEach((sign)=>sign.addEventListener('click',function(e){
     if(operand1 || operand2)
     {
-        if(operator == null){
+        if(operator == ''){
             operator = e.target.innerHTML;
             str+=operator;
             display.innerHTML  = str;
@@ -57,7 +58,7 @@ signs.forEach((sign)=>sign.addEventListener('click',function(e){
         else{
             result = getResult(operand1, operand2, operator);
             operand1 = result;
-            operand2 = null;
+            operand2 = '';
             operator = e.target.innerHTML;
             str= `${result}${operator}`;
             display.innerHTML  = str;
@@ -67,15 +68,27 @@ signs.forEach((sign)=>sign.addEventListener('click',function(e){
 }))
 
 equal.addEventListener('click',function(e){
-    if(operand1!=null && operand2!=null && operator!=null){
+    if(operand1!='' && operand2!='' && operator!=''){
         result = getResult(operand1, operand2, operator);
-        str=str.concat(`=${result}`);
+        str=`${result}`;
         display.innerHTML  = str;
         console.log(str);
-        operand1=null;
-        operand2=null;
-        operator=null;
+        operand1='';
+        operand2='';
+        operator='';
+        str='';
 
     }
 
+})
+
+all_clear.addEventListener('click',function(e){
+
+    operand1='';
+    operand2='';
+    operator='';
+    str = '';
+    display.innerHTML  = str;
+
+    
 })
