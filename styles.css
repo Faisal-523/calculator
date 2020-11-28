@@ -23,7 +23,7 @@ body{
     margin:10px;
     font-size:30px;
     color:#4e4e4e;
-    background-color: #ffffff;
+    background-color: #fdfdfd;;
     border-radius:10px;
     border:none;
     outline:none;
@@ -36,15 +36,15 @@ body{
   }
 
 .btn:hover{
-    background-color: #98DE58;
+    background-color: #d3d3d3;
 }
 
 .key:hover{
-    background-color: #63a4ff;   
+    //background-color: #63a4ff;   
 }
 
 .operation:hover{
-    background-color: #f9d976;
+    //background-color: #f9d976;
 }
 
 .dispdiv{
@@ -54,6 +54,7 @@ body{
     font-size:50px;
     font-family:Roboto;
     background-color:#5a5a59;
+    border-radius:10px;
     display:float;
 }
 #display{
